@@ -1,0 +1,4 @@
+dn: dc=example,dc=ruck,dc=io
+dc: example
+objectClass: domain
+

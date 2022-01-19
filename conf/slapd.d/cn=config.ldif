@@ -1,0 +1,8 @@
+dn: cn=config
+objectClass: olcGlobal
+cn: config
+olcArgsFile: /tmp/slapd.args
+olcLogLevel: none
+olcPidFile: /tmp/slapd.pid
+olcToolThreads: 1
+structuralObjectClass: olcGlobal

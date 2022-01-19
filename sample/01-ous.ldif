@@ -1,0 +1,16 @@
+dn: ou=services,dc=example,dc=ruck,dc=io
+ou: services
+objectClass: organizationalUnit
+
+dn: ou=policies,dc=example,dc=ruck,dc=io
+ou: policies
+objectClass: organizationalUnit
+
+dn: ou=organizations,dc=example,dc=ruck,dc=io
+ou: organizations
+objectClass: organizationalUnit
+
+dn: ou=groups,dc=example,dc=ruck,dc=io
+ou: groups
+objectClass: organizationalUnit
+

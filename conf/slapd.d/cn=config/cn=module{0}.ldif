@@ -1,0 +1,6 @@
+dn: cn=module{0}
+objectClass: olcModuleList
+cn: module{0}
+olcModulePath: /opt/openldap/lib
+olcModuleLoad: {0}back_mdb
+structuralObjectClass: olcModuleList
