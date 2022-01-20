@@ -9,7 +9,7 @@ run:
 		--env LDAP_PORT="1389" \
 		--env DEBUG=0 \
 		--publish 1389:1389 \
-		--mount "type=bind,src=${PWD}/sample,target=/ldifs/object" \
+		--mount "type=bind,src=${PWD}/sample,target=/ldifs" \
 		--name openldap \
 		openldap:latest
 
