@@ -16,7 +16,11 @@ function banner() {
 }
 
 function copyfile() {
-    envsubst < "${1}" > "${DATA_SLAPDD}/${2}"
+    envsubst < "${1}" > "${2}"
+}
+
+function slapcat() {
+    $OPENLDAP_SBIN/slapcat -n ${1} -F "${DATA_SLAPDD}"
 }
 
 function slaptest() {
@@ -45,5 +49,5 @@ function slapadd_ldifs() {
 }
 
 function slapmodify() {
-    slapmodify -n ${1} -d "${DEBUG_LEVEL}" -F "${DATA_SLAPDD}" < ${2}
+    ${OPENLDAP_SBIN}/slapmodify -n ${1} -d "${DEBUG_LEVEL}" -F "${DATA_SLAPDD}" < ${2}
 }

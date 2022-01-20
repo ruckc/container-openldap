@@ -26,7 +26,7 @@ export CUSTOM_CONFIG_LDIFS="/ldifs/config"
 export CUSTOM_OBJECT_LDIFS="/ldifs/object"
 
 export OPENLDAP_BASE="/opt/openldap"
-export OPENLDAP_SBIN="${OPENLDAP_BASE}/bin"
+export OPENLDAP_BIN="${OPENLDAP_BASE}/bin"
 export OPENLDAP_LIBEXEC="${OPENLDAP_BASE}/libexec"
 export OPENLDAP_SBIN="${OPENLDAP_BASE}/sbin"
 export SLAPD="${OPENLDAP_LIBEXEC}/slapd"

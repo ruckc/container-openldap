@@ -15,3 +15,6 @@ run:
 
 test:
 	ldapsearch -H ldap://localhost:1389 -D "cn=admin,dc=example,dc=ruck,dc=io" -w test -x -b "dc=example,dc=ruck,dc=io"
+
+shell:
+	podman run -it --rm --entrypoint /bin/bash openldap:latest
