@@ -38,8 +38,8 @@ fi
 if [ -n "${LDAP_PORT}" ]; then
   LDAP_URIS="${LDAP_URIS} ldap://:${LDAP_PORT}"
 fi
-if [ -n "${LDAPS_PORT_NUMBER}" ]; then
-  LDAP_URIS="${LDAP_URIS} ldaps://:${LDAPs_PORT}"
+if [ -n "${LDAPS_PORT}" ]; then
+  LDAP_URIS="${LDAP_URIS} ldaps://:${LDAPS_PORT}"
 fi
 export LDAP_URIS
 
