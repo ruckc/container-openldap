@@ -9,8 +9,8 @@ RUN apt-get update && \
     apt-get clean && \
     mkdir /src
 
-ADD openldap-2.6.0.tgz /src
-WORKDIR /src/openldap-2.6.0
+ADD openldap-2.6.1.tgz /src
+WORKDIR /src/openldap-2.6.1
 RUN ls && \
     ./configure --prefix=/opt/openldap \
                 --with-cyrus-sasl \
@@ -26,6 +26,7 @@ RUN ls && \
                 --enable-memberof \
                 --enable-dyngroup \
                 --enable-dynlist \
+                --enable-crypt \
                 && \
     make depend && \
     make && \
