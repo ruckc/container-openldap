@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e
-set -x
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 . ${SCRIPT_DIR}/functions.sh
@@ -13,6 +12,10 @@ if [ -n "${LDAPS_PORT}" ]; then
   require_env LDAP_TLS_CA_FILE
   require_env LDAP_TLS_CERT_FILE
   require_env LDAP_TLS_KEY_FILE
+fi
+
+if [ -n "${DEBUG}" ]; then
+  set -x
 fi
 
 export DATA_DIR="/data"

@@ -7,12 +7,17 @@ banner $0
 
 catcherr() {
     echo "An error occurred at line $1"
+    if [ -n "${DEBUG}" ]; then
+      sleep 1500
+    fi
     exit 1
 }
 trap 'catcherr $LINENO' ERR
 
 set -o pipefail
-set -x
+if [ -n "${DEBUG}" ]; then
+  set -x
+fi
 
 # initialize slapd.d
 mkdir -pv "${DATA_SLAPDD}" "${DATA_DATABASE}"
