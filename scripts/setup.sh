@@ -28,13 +28,17 @@ find $DATA_SLAPDD -type f
 
 banner "loading config ldifs"
 # slapadd config ldifs
-slapadd_ldifs 0 "${CUSTOM_CONFIG_LDIFS}"
+for DIR in ${CUSTOM_CONFIG_LDIFS//,/ }; do
+  slapadd_ldifs 0 "${DIR}"
+done
 slaptest
 find $DATA_SLAPDD -type f
 
 banner "loading object ldifs"
 # ldapadd object ldifs
-slapadd_ldifs 1 "${CUSTOM_OBJECT_LDIFS}"
+for DIR in ${CUSTOM_OBJECT_LDIFS//,/ }; do
+slapadd_ldifs 1 "${DIR}"
+done
 slaptest
 find $DATA_SLAPDD -type f
 
