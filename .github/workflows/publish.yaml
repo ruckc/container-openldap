@@ -11,45 +11,6 @@ env:
   IMAGE_NAME: ${{ github.actor }}/openldap
 
 jobs:
-  build-and-push-amd64:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Log in to the Container registry
-        uses: docker/login-action@v1
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=semver,pattern=version
-            type=semver,pattern={{major}}.{{minor}}
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-
   build-and-push-arm64:
     runs-on: ubuntu-latest
     permissions:
@@ -64,7 +25,7 @@ jobs:
         id: qemu
         uses: docker/setup-qemu-action@v1
         with:
-          platforms: arm64
+          platforms: arm64,amd64
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
@@ -94,4 +55,4 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          platforms: linux/arm64
+          platforms: linux/arm64,linux/amd64
