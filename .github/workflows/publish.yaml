@@ -11,7 +11,7 @@ env:
   IMAGE_NAME: ${{ github.actor }}/openldap
 
 jobs:
-  build-and-push-arm64:
+  build-and-push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
