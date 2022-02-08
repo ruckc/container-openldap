@@ -26,7 +26,7 @@ export ROOT_DN="${ADMIN_DN:-cn=admin,${LDAP_SUFFIX}}"
 export ROOT_PASSWORD="$(echo -n ${ADMIN_PASSWORD} | base64)"
 export DEBUG_LEVEL="${DEBUG:-0}"
 export CONFIG_LDIFS="${CUSTOM_CONFIG_LDIFS:-/ldifs/config}"
-export OBJECT_LDIFS="${CUSTOM_OBJECT_LDIFS:-/ldifs/object}"
+export OBJECT_LDIFS="${CUSTOM_OBJECT_LDIFS:-/ldifs/objects}"
 
 export OPENLDAP_BASE="/opt/openldap"
 export OPENLDAP_BIN="${OPENLDAP_BASE}/bin"
