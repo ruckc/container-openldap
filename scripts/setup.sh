@@ -7,7 +7,7 @@ banner $0
 
 catcherr() {
     echo "An error occurred at line $1"
-    if [ -n "${DEBUG}" ]; then
+    if [ -n "${DEBUG_SCRIPTS}" ]; then
       sleep 1500
     fi
     exit 1
@@ -15,7 +15,7 @@ catcherr() {
 trap 'catcherr $LINENO' ERR
 
 set -o pipefail
-if [ -n "${DEBUG}" ]; then
+if [ -n "${DEBUG_SCRIPTS}" ]; then
   set -x
 fi
 

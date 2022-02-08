@@ -14,7 +14,7 @@ if [ -n "${LDAPS_PORT}" ]; then
   require_env LDAP_TLS_KEY_FILE
 fi
 
-if [ -n "${DEBUG}" ]; then
+if [ -n "${DEBUG_SCRIPTS}" ]; then
   set -x
 fi
 
