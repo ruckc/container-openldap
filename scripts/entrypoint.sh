@@ -34,10 +34,7 @@ export OPENLDAP_LIBEXEC="${OPENLDAP_BASE}/libexec"
 export OPENLDAP_SBIN="${OPENLDAP_BASE}/sbin"
 export SLAPD="${OPENLDAP_LIBEXEC}/slapd"
 
-LDAP_URIS=""
-if [ -n "${LDAPI}"] ]; then
-  LDAP_URIS="${LDAP_URIS} ${LDAPI}"
-fi
+LDAP_URIS="ldapi://"
 if [ -n "${LDAP_PORT}" ]; then
   LDAP_URIS="${LDAP_URIS} ldap://:${LDAP_PORT}"
 fi

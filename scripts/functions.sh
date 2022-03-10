@@ -31,6 +31,10 @@ function slapadd() {
     "${OPENLDAP_SBIN}/slapadd" -d "${DEBUG_LEVEL}" -F "${DATA_SLAPDD}" $@
 }
 
+function ldapadd() {
+    "${OPENLDAP_BIN}/ldapadd" -d "${DEBUG_LEVEL}" -Y EXTERNAL -h ldapi:// $@
+}
+
 function slapadd_ldifs() {
     DB=$1
     DIR=$2
@@ -44,6 +48,22 @@ function slapadd_ldifs() {
         for LDIF in ${DIR}/*.ldif; do
             echo "Loading ${LDIF}"
             slapadd -n ${DB} -l ${LDIF}
+        done
+    fi
+}
+
+function ldapadd_ldifs() {
+    DIR=$1
+
+    if [ ! -d "${DIR}" ]; then
+        return
+    fi
+
+    COUNT=$(find ${DIR} -type f -name \*.ldif | wc -l)
+    if [ $COUNT -gt 0 ]; then
+        for LDIF in ${DIR}/*.ldif; do
+            echo "Loading ${LDIF}"
+            ldapadd -n ${DB} -l ${LDIF}
         done
     fi
 }

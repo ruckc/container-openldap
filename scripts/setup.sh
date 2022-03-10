@@ -39,14 +39,6 @@ done
 slaptest
 find $DATA_SLAPDD -type f
 
-banner "loading object ldifs"
-# ldapadd object ldifs
-for DIR in ${CUSTOM_OBJECT_LDIFS//,/ }; do
-slapadd_ldifs 1 "${DIR}"
-done
-slaptest
-find $DATA_SLAPDD -type f
-
 # configure TLS
 if [ -n "${LDAPS_PORT}" ]; then
 slapmodify 0 /dev/stdin << EOF
@@ -63,6 +55,16 @@ olcTLSCertificateKeyFile: ${LDAP_TLS_KEY_FILE}
 EOF
 fi
 
+$SLAPD -h "${LDAP_URIS}" -d "${DEBUG_LEVEL}" -F "${DATA_SLAPDD}" &
+SLAPD_PID=$!
+sleep 5
+banner "loading object ldifs"
+# ldapadd object ldifs
+for DIR in ${CUSTOM_OBJECT_LDIFS//,/ }; do
+ldapadd_ldifs "${DIR}"
+done
+kill $SLAPD_PID
+wait $SLAPD_PID
 
 # mark initialized
 touch "${INITIALIZED_FILE}"
