@@ -32,7 +32,7 @@ function slapadd() {
 }
 
 function ldapadd() {
-    "${OPENLDAP_BIN}/ldapadd" -d "${DEBUG_LEVEL}" -Y EXTERNAL -h ldapi:// $@
+    "${OPENLDAP_BIN}/ldapadd" -d "${DEBUG_LEVEL}" -Y EXTERNAL -H ldapi:// $@
 }
 
 function slapadd_ldifs() {
