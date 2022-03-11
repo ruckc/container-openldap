@@ -63,7 +63,7 @@ function ldapadd_ldifs() {
     if [ $COUNT -gt 0 ]; then
         for LDIF in ${DIR}/*.ldif; do
             echo "Loading ${LDIF}"
-            ldapadd -n ${DB} -f ${LDIF}
+            ldapadd -f ${LDIF}
         done
     fi
 }
