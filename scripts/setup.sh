@@ -55,6 +55,11 @@ olcTLSCertificateKeyFile: ${LDAP_TLS_KEY_FILE}
 EOF
 fi
 
+slapadd << EOF
+dn: ${LDAP_SUFFIX}
+objectClass: domain
+EOF
+
 $SLAPD -h "${LDAP_URIS}" -d "${DEBUG_LEVEL}" -F "${DATA_SLAPDD}" &
 SLAPD_PID=$!
 sleep 5
