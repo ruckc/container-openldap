@@ -9,8 +9,8 @@ RUN apt-get update && \
     apt-get clean && \
     mkdir /src
 
-ADD openldap-2.6.2.tgz /src
-WORKDIR /src/openldap-2.6.2
+ADD openldap-2.6.3.tgz /src
+WORKDIR /src/openldap-2.6.3
 RUN ls && \
     ./configure --prefix=/opt/openldap \
                 --with-cyrus-sasl \
